@@ -52,6 +52,7 @@ export default {};
     .logo {
       font: bold 38px/1.12 "Times New Roman", Georgia, Times, sans-serif;
       color: #555;
+      word-break: break-all;
       &:hover {
         color: #777;
       }
@@ -93,6 +94,8 @@ export default {};
     .nav-menu {
       position: relative;
       text-align: center;
+      justify-content: center;
+      flex-wrap: wrap;
       .nav-link {
         padding: 0 15px;
         line-height: 27px;

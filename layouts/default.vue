@@ -30,10 +30,16 @@ export default {
   padding: 0 60px;
   max-width: 1150px;
   margin: 0 auto;
+  .container {
+    display: flex;
+  }
 }
 @media print, screen and (max-width: 48em) {
   .layout {
     padding: 0 30px;
+    .container {
+      display: block;
+    }
   }
 }
 @media print, screen and (max-width: 35.5em) {

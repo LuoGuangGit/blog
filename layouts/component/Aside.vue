@@ -123,12 +123,12 @@ export default {};
         li {
           margin: 5px 0;
           line-height: 1.5;
-          .link {
+          /* .link {
             color: #6E7173;
             &:hover {
               color: #444;
             }
-          }
+          } */
         }
       }
       .tag-list {

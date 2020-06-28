@@ -14,9 +14,9 @@
       <nuxt-link to="/archives" class="nav-link" exact-active-class="current">
         <i class="fa fa-archive"> 归档</i>
       </nuxt-link>
-      <nuxt-link to="/tags" class="nav-link" exact-active-class="current">
+      <!-- <nuxt-link to="/tags" class="nav-link" exact-active-class="current">
         <i class="fa fa-tag"> 标签</i>
-      </nuxt-link>
+      </nuxt-link> -->
       <nuxt-link to="/about" class="nav-link" exact-active-class="current">
         <i class="fa fa-user"> 关于</i>
       </nuxt-link>

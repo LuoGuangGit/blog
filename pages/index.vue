@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <article class="article">
+    <article class="article" v-for="item in [1, 2, 3, 4, 5]" :key="item">
       <h1 class="article-title">
         <a class="link" href="/">测试文章</a>
       </h1>

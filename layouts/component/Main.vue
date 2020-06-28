@@ -1,7 +1,7 @@
 <template>
-  <div class="wrapper">
-    首页
-  </div>
+  <main class="main">
+    <Nuxt />
+  </main>
 </template>
 
 <script>

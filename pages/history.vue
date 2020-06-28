@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    首页
+    历史
   </div>
 </template>
 

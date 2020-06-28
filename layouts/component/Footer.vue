@@ -1,7 +1,5 @@
 <template>
-  <div class="wrapper">
-    首页
-  </div>
+  <footer class="footer"></footer>
 </template>
 
 <script>

@@ -36,7 +36,8 @@ export default {
   ** Global CSS
   */
   css: [
-    '@/assets/css/reset.css'
+    '@/assets/css/reset.css',
+    '@/assets/font-awesome/css/font-awesome.min.css'
   ],
   /*
   ** Plugins to load before mounting the App

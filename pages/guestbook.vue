@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    首页
+    留言
   </div>
 </template>
 

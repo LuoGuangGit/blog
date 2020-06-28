@@ -1,3 +1,7 @@
+import path from 'path'
+import glob from 'glob'
+
+const markdownPaths = ['blog']
 
 export default {
   /*
@@ -15,11 +19,11 @@ export default {
   ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'Csdoker的博客 | Csdoker\'s Blog',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { name: 'viewport', content: 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover' },
+      { hid: 'description', name: 'description', content: '个人博客' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -51,10 +55,41 @@ export default {
   */
   modules: [
   ],
+  generate: {
+    routes: dynamicMarkdownRoutes()
+  },
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
+    postcss: {
+      preset: {
+        features: {
+          customProperties: false
+        }
+      }
+    },
+    /*
+    ** You can extend webpack config here
+    */
+    extend (config, ctx) {
+      config.module.rules.push(
+        {
+          test: /\.md$/,
+          include: path.resolve(__dirname, 'content'),
+          loader: 'frontmatter-markdown-loader'
+        }
+      )
+    }
   }
+}
+
+function dynamicMarkdownRoutes () {
+  return [].concat(
+    ...markdownPaths.map(mdPath => {
+      return glob.sync(`${mdPath}/*.md`, { cwd: 'content' })
+        .map(filepath => `${mdPath}/${path.basename(filepath, '.md')}`)
+    })
+  )
 }

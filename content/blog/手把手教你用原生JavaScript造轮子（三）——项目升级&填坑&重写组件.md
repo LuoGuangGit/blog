@@ -1,7 +1,6 @@
 ---
 title: 手把手教你用原生JavaScript造轮子（三）——项目升级&填坑&重写组件
 date: 2020-04-08
-sidebar: false
 tags:
  - JavaScript
  - Webpack
@@ -18,7 +17,7 @@ categories:
  - Babel
 ---
 
-<!-- # 项目升级&填坑 -->
+# 项目升级&填坑
 
 ## 说明
 

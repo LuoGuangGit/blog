@@ -1,7 +1,6 @@
 ---
 title: 手把手教你用原生JavaScript造轮子（四）——选项卡
 date: 2020-04-10
-sidebar: false
 tags:
  - JavaScript
  - Webpack
@@ -17,15 +16,11 @@ categories:
  - Babel
 ---
 
-<!-- # Tabs 选项卡 -->
+# Tabs 选项卡
 
 > 文档：[Tabs](https://csdoker.github.io/tiny-wheels/components/tabs.html#%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95)
-
 > 源码：[tiny-wheels](https://github.com/csdoker/tiny-wheels)
-
 > 如果觉得好用就点个 Star 吧~(〃'▽'〃)
-
-<!-- more -->
 
 ## 效果
 
@@ -34,6 +29,8 @@ categories:
 ## 思路
 
 这个组件的难点在于控制每个`tab`项底部条的移动以及对应`panel`的移动，最常见的做法是通过`transform`来改变元素的位置，不废话，直接上代码
+
+<!-- more -->
 
 ## 实现
 

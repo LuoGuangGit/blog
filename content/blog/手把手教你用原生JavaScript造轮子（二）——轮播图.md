@@ -1,7 +1,6 @@
 ---
 title: 手把手教你用原生JavaScript造轮子（二）——轮播图
 date: 2018-08-10
-sidebar: false
 tags:
  - JavaScript
  - Vue

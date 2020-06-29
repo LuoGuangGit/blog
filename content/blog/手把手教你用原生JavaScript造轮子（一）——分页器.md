@@ -1,7 +1,6 @@
 ---
 title: 手把手教你用原生JavaScript造轮子（一）——分页器
 date: 2018-07-22
-sidebar: false
 tags:
  - JavaScript
  - Vue

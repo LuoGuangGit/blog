@@ -1,7 +1,6 @@
 ---
 title: 手把手教你用原生JavaScript造轮子（六）——树形控件
 date: 2020-04-24
-sidebar: false
 tags:
  - JavaScript
  - Webpack
@@ -17,15 +16,11 @@ categories:
  - Babel
 ---
 
-<!-- # Tree 树形控件 -->
+# Tree 树形控件
 
 > 文档：[Tree](https://csdoker.github.io/tiny-wheels/components/tree.html#%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95)
-
 > 源码：[tiny-wheels](https://github.com/csdoker/tiny-wheels)
-
 > 如果觉得好用就点个 Star 吧~(〃'▽'〃)
-
-<!-- more -->
 
 ## 效果
 
@@ -34,6 +29,8 @@ categories:
 ## 思路
 
 树形控件的效果，实际上就是对`tree`这种数据结构的一种运用，因为用户传入的数据是嵌套结构的，也就是一种类似于`tree`的结构，我们组件中首先要实现的，就是对这种数据的遍历操作，剩下的所有逻辑都是基于遍历的基础上的
+
+<!-- more -->
 
 ## 实现
 

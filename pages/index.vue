@@ -39,8 +39,8 @@ export default {
       path: `/blog/${key.replace('.md', '').replace('./', '')}`
     }))
     // TODO 使用脚本来生成文章，默认添加标题和时间，根据生成时的创建时间来排序
-    const sortArticles = articles.sort((a, b) => new Date(b.attributes.date).getTime() - new Date(a.attributes.date).getTime())
-    return { articles: getArticles(1, perHomeCount, sortArticles), allArticles: sortArticles }
+    articles.sort((a, b) => new Date(b.attributes.date).getTime() - new Date(a.attributes.date).getTime())
+    return { articles: getArticles(1, perHomeCount, articles), allArticles: articles }
   },
   components: {
     Pager

@@ -21,7 +21,10 @@ export default {
     Main,
     Aside,
     Footer
-  }
+  },
+  // async fetch () {
+
+  // }
 }
 </script>
 

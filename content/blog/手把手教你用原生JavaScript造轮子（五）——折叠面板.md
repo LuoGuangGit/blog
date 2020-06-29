@@ -22,6 +22,8 @@ categories:
 > 源码：[tiny-wheels](https://github.com/csdoker/tiny-wheels)
 > 如果觉得好用就点个 Star 吧~(〃'▽'〃)
 
+<!-- more -->
+
 ## 效果
 
 ![Collapse](https://i.loli.net/2020/04/23/N5hLwDK3q1dMiyC.gif)
@@ -29,8 +31,6 @@ categories:
 ## 思路
 
 每个面板折叠、展开的动画效果其实就是去控制`collapse-panel`的`height`变化，所以在一开始就需要记录下每个面板的原始高度，否则用户在折叠面板后，高度就变为 0 了，这时候计算出来的值也为 0，就无法还原为初始高度了
-
-<!-- more -->
 
 ## 实现
 

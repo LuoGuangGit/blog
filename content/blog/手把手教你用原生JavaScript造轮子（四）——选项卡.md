@@ -22,6 +22,8 @@ categories:
 > 源码：[tiny-wheels](https://github.com/csdoker/tiny-wheels)
 > 如果觉得好用就点个 Star 吧~(〃'▽'〃)
 
+<!-- more -->
+
 ## 效果
 
 ![Tabs](https://i.loli.net/2020/04/10/B3mtVMb92S7FA4R.gif)
@@ -29,8 +31,6 @@ categories:
 ## 思路
 
 这个组件的难点在于控制每个`tab`项底部条的移动以及对应`panel`的移动，最常见的做法是通过`transform`来改变元素的位置，不废话，直接上代码
-
-<!-- more -->
 
 ## 实现
 

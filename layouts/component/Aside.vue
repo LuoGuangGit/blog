@@ -9,17 +9,8 @@
           <i class="fa fa-folder-o"> 分类</i>
         </div>
         <ul class="category-list">
-          <li class="category-list-item">
-            <a class="link" href="/">测试分类1</a>
-          </li>
-          <li class="category-list-item">
-            <a class="link" href="/">测试分类2</a>
-          </li>
-          <li class="category-list-item">
-            <a class="link" href="/">测试分类3</a>
-          </li>
-          <li class="category-list-item">
-            <a class="link" href="/">测试分类4</a>
+          <li class="category-list-item" v-for="category in categories" :key="category">
+            <nuxt-link class="link" :to="`/category/${category}`">{{category}}</nuxt-link>
           </li>
         </ul>
       </div>
@@ -28,17 +19,7 @@
           <i class="fa fa-tag"> 标签</i>
         </div>
         <div class="tag-list">
-          <a class="tag-item" href="/">JavaScript</a>
-          <a class="tag-item" href="/">CSS</a>
-          <a class="tag-item" href="/">HTML</a>
-          <a class="tag-item" href="/">Vue</a>
-          <a class="tag-item" href="/">React</a>
-          <a class="tag-item" href="/">Webpack</a>
-          <a class="tag-item" href="/">HTTP</a>
-          <a class="tag-item" href="/">Nuxt</a>
-          <a class="tag-item" href="/">Node</a>
-          <a class="tag-item" href="/">Koa</a>
-          <a class="tag-item" href="/">Mongodb</a>
+          <nuxt-link class="tag-item" :to="`/tag/${tag}`" v-for="tag in tags" :key="tag">{{tag}}</nuxt-link>
         </div>
       </div>
       <div class="widget">
@@ -46,17 +27,10 @@
           <i class="fa fa-file-o"> 最近文章</i>
         </div>
         <ul class="article-list">
-          <li class="article-list-item">
-            <a class="link" href="/">文章1</a>
-          </li>
-          <li class="article-list-item">
-            <a class="link" href="/">文章2</a>
-          </li>
-          <li class="article-list-item">
-            <a class="link" href="/">文章3</a>
-          </li>
-          <li class="article-list-item">
-            <a class="link" href="/">文章4</a>
+          <li class="article-list-item" v-for="article in rencentArticles" :key="article.attributes.title">
+            <nuxt-link class="link" :to="article.path">
+              {{ article.attributes.title }}
+            </nuxt-link>
           </li>
         </ul>
       </div>
@@ -84,7 +58,50 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      categories: [],
+      tags: [],
+      rencentArticles: []
+    }
+  },
+  methods: {
+    getCategories(articles) {
+      const categories = []
+      articles.forEach(article => {
+        article.attributes.categories.forEach(category => {
+          if (categories.filter(item => item === category).length === 0) {
+            categories.push(category)
+          }
+        })
+      })
+      return categories
+    },
+    getTags(articles) {
+      const tags = []
+      articles.forEach(article => {
+        article.attributes.tags.forEach(tag => {
+          if (tags.filter(item => item === tag).length === 0) {
+            tags.push(tag)
+          }
+        })
+      })
+      return tags
+    }
+  },
+  async fetch () {
+    const context = await require.context('~/content/blog', true, /\.md$/)
+    const articles = await context.keys().map(key => ({
+      ...context(key),
+      path: `/blog/${key.replace('.md', '').replace('./', '')}`
+    }))
+    articles.sort((a, b) => new Date(b.attributes.date).getTime() - new Date(a.attributes.date).getTime())
+    this.rencentArticles = articles.slice(0, 5)
+    this.categories = this.getCategories(articles)
+    this.tags = this.getTags(articles)
+  },
+};
 </script>
 
 <style lang="scss" scoped>

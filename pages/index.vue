@@ -7,7 +7,9 @@
         </nuxt-link>
       </h1>
       <div class="article-meta">
-        {{ formatDate(article.attributes.date) }}
+        <div class="article-date">
+          {{ formatDate(article.attributes.date) }}
+        </div>  
       </div>
       <div class="article-content markdown-body" v-html="article.summary"></div>
       <div class="article-more">
@@ -87,10 +89,15 @@ export default {
     margin: 15px 0 0;
     color: #6E7173;
     text-indent: .15em;
-    &::before {
-      font-family: "FontAwesome";
-      content: "\f073";
-      padding-right: 0.3em;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    .article-date {
+      &::before {
+        font-family: "FontAwesome";
+        content: "\f073";
+        padding-right: 0.3em;
+      }
     }
   }
   .article-content {

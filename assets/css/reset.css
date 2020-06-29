@@ -28,15 +28,15 @@ a {
   color: #6E7173;
   text-decoration: none;
   transition: all .1s ease-in;
-}
-a:hover {
-  color: #444;
+  &:hover {
+    color: #444;
+  }
 }
 
-ul,
+/* ul,
 ol {
   list-style: none;
-}
+} */
 
 button,
 input {

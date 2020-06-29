@@ -1,5 +1,7 @@
 import path from 'path'
 import glob from 'glob'
+import Mode from 'frontmatter-markdown-loader/mode'
+import MarkdownIt from 'markdown-it'
 
 const markdownPaths = ['blog']
 
@@ -37,7 +39,7 @@ export default {
   */
   css: [
     '@/assets/css/reset.css',
-    '@/assets/font-awesome/css/font-awesome.min.css'
+    '@/assets/css/app.scss',
   ],
   /*
   ** Plugins to load before mounting the App
@@ -83,7 +85,11 @@ export default {
         {
           test: /\.md$/,
           include: path.resolve(__dirname, 'content'),
-          loader: 'frontmatter-markdown-loader'
+          loader: 'frontmatter-markdown-loader',
+          options: {
+            // mode: [Mode.VUE_COMPONENT, Mode.META],
+            markdownIt: markdownRenderer(),
+          },
         }
       )
     }
@@ -97,4 +103,10 @@ function dynamicMarkdownRoutes () {
         .map(filepath => `${mdPath}/${path.basename(filepath, '.md')}`)
     })
   )
+}
+
+function markdownRenderer() {
+  const md = MarkdownIt({ html: true, breaks: true })
+  md.use(require('markdown-it-prism'))
+  return md
 }

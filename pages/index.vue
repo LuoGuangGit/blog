@@ -1,39 +1,70 @@
 <template>
   <div class="wrapper">
-    <article class="article" v-for="item in [1, 2, 3, 4, 5]" :key="item">
+    <article class="article" v-for="article in articles" :key="article.attributes.title">
       <h1 class="article-title">
-        <a class="link" href="/">测试文章</a>
+        <nuxt-link class="link" :to="article.path">
+          {{ article.attributes.title }}
+        </nuxt-link>
       </h1>
-      <div class="article-meta">2020年06月28日</div>
-      <div class="article-content">
-        随着年纪的增长，惰性真是越来越强，目测今年的更新数量不会超过5篇了。但实际上每天花在电脑上的时间一点也不少，总有折腾不完的东西——VPS，路由器，手机，PC，电视盒子……并且每次涉足点什么的时候总是废寝忘食，仿佛为此而生，如果工作上能有这一半的劲头，也不至于总是这副听天由命混吃等死的咸鱼样。
+      <div class="article-meta">
+        {{ formatDate(article.attributes.date) }}
       </div>
+      <div class="article-content markdown-body" v-html="article.summary"></div>
       <div class="article-more">
-        <a class="link" href="/">阅读全文</a>
+        <nuxt-link class="link" :to="article.path">
+          阅读全文
+        </nuxt-link>
       </div>
     </article>
     <nav class="navigator">
-      <pager :hide-if-one-page="false" :total-page="50" :current-page.sync="currentPage" @update:currentPage="updatePage" />
+      <pager :hide-if-one-page="false" :total-page="pagerCount" :current-page.sync="currentPage" @update:currentPage="updatePage" />
     </nav>
   </div>
 </template>
 
 <script>
 import Pager from '@/components/Pager'
+import { perHomeCount } from '@/config'
+import { getArticles, getPagerCount } from '@/util'
 
 export default {
+  async asyncData () {
+    const context = await require.context('~/content/blog', true, /\.md$/)
+    // console.log(context(context.keys()[0]))
+    const articles = await context.keys().map(key => ({
+      ...context(key),
+      summary: context(key).html.split('<!-- more -->')[0],
+      path: `/blog/${key.replace('.md', '').replace('./', '')}`
+    }))
+    // TODO 使用脚本来生成文章，默认添加标题和时间，根据生成时的创建时间来排序
+    const sortArticles = articles.sort((a, b) => new Date(b.attributes.date).getTime() - new Date(a.attributes.date).getTime())
+    return { articles: getArticles(1, perHomeCount, sortArticles), allArticles: sortArticles }
+  },
   components: {
     Pager
   },
   data () {
     return {
-      currentPage: 1
+      currentPage: 1,
+    }
+  },
+  computed: {
+    pagerCount() {
+      return getPagerCount(this.allArticles.length, perHomeCount)
     }
   },
   methods: {
     updatePage(page) {
       this.currentPage = page
-      // TODO: get article list data
+      this.articles = getArticles(page, perHomeCount, this.allArticles)
+    },
+    formatDate(date) {
+      let year = new Date(date).getFullYear();
+      let month = new Date(date).getMonth() + 1;
+      let day = new Date(date).getDate();
+      month = month < 10 ? `0${month}` : month;
+      day = day < 10 ? `0${day}` : day;
+      return `${year}年${month}月${day}日`
     }
   }
 };

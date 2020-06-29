@@ -9,7 +9,7 @@
       <div class="article-meta">
         <div class="article-date">
           {{ formatDate(article.attributes.date) }}
-        </div>  
+        </div>
       </div>
       <div class="article-content markdown-body" v-html="article.summary"></div>
       <div class="article-more">
@@ -27,7 +27,7 @@
 <script>
 import Pager from '@/components/Pager'
 import { perHomeCount } from '@/config'
-import { getArticles, getPagerCount } from '@/util'
+import { getArticles, getPagerCount, formatDate } from '@/util'
 
 export default {
   async asyncData () {
@@ -53,7 +53,7 @@ export default {
   computed: {
     pagerCount() {
       return getPagerCount(this.allArticles.length, perHomeCount)
-    }
+    },
   },
   methods: {
     updatePage(page) {
@@ -61,12 +61,7 @@ export default {
       this.articles = getArticles(page, perHomeCount, this.allArticles)
     },
     formatDate(date) {
-      let year = new Date(date).getFullYear();
-      let month = new Date(date).getMonth() + 1;
-      let day = new Date(date).getDate();
-      month = month < 10 ? `0${month}` : month;
-      day = day < 10 ? `0${day}` : day;
-      return `${year}年${month}月${day}日`
+      return formatDate(date)
     }
   }
 };

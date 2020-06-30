@@ -35,10 +35,10 @@ $ npm run generate
 
 ## 参考
 
-[田勇的博客](https://github.com/tianyong90/blog)
-[Deswan's Blog](https://github.com/deswan/blog-static)
-[nuxt-markdown-blog-starter](https://github.com/marinaaisa/nuxt-markdown-blog-starter)
-[nuxt-blog-frontmatter-markdown-loader](https://github.com/regenrek/nuxt-blog-frontmatter-markdown-loader)
-[starter-for-nuxt-markdown-blog](https://github.com/jennapederson/starter-for-nuxt-markdown-blog)
-[maupassant-hexo](https://github.com/tufu9441/maupassant-hexo)
-[blog-nuxt](https://gitee.com/chinesee/blog-nuxt)
+- [田勇的博客](https://github.com/tianyong90/blog)
+- [Deswan's Blog](https://github.com/deswan/blog-static)
+- [nuxt-markdown-blog-starter](https://github.com/marinaaisa/nuxt-markdown-blog-starter)
+- [nuxt-blog-frontmatter-markdown-loader](https://github.com/regenrek/nuxt-blog-frontmatter-markdown-loader)
+- [starter-for-nuxt-markdown-blog](https://github.com/jennapederson/starter-for-nuxt-markdown-blog)
+- [maupassant-hexo](https://github.com/tufu9441/maupassant-hexo)
+- [blog-nuxt](https://gitee.com/chinesee/blog-nuxt)

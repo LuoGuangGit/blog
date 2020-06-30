@@ -8,7 +8,8 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "export": "nuxt export",
-    "serve": "nuxt serve"
+    "serve": "nuxt serve",
+    "deploy": "sh deploy.sh"
   },
   "dependencies": {
     "frontmatter-markdown-loader": "^3.6.0",

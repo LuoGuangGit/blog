@@ -2,7 +2,7 @@
   <header class="header">
     <div class="site-name">
       <h1 class="hidden">Csdoker</h1>
-      <a class="logo" href="/.">Csdoker</a>
+      <nuxt-link class="logo" to="/">Csdoker</nuxt-link>
       <p class="description">
         欢迎来到我的个人博客，我会在这里记录下关于学习和生活的点点滴滴
       </p>

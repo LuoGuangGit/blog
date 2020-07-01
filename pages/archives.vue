@@ -2,12 +2,12 @@
   <div class="wrapper">
     <div class="archive">
       <div class="archive-list">
-        <div class="archive-item">
-          <h2 class="archive-time">2020</h2>
-          <ul class="article-list">
+        <div class="archive-item" v-for="archive in archives" :key="archive.date">
+          <h2 class="archive-time">{{archive.date}}</h2>
+          <ul class="article-list" v-for="article in archive.articles" :key="article.attributes.title">
             <li class=".article-item">
-              <span class="article-date">2020年04月19日</span>
-              <nuxt-link class="article-link" to="/" title="文章标题">文章标题</nuxt-link>
+              <span class="article-date">{{ formatDate(article.attributes.date) }}</span>
+              <nuxt-link class="article-link" :to="article.path" :title="article.attributes.title">{{ article.attributes.title }}</nuxt-link>
             </li>
           </ul>
         </div>
@@ -17,7 +17,25 @@
 </template>
 
 <script>
-export default {}
+import { formatArticles, formatDate } from '@/util'
+export default {
+  async asyncData() {
+    const context = await require.context('~/content/blog', true, /\.md$/)
+    const articles = await context.keys().map(key => ({
+      ...context(key),
+      date: context(key).attributes.date,
+      path: `/blog/${key.replace('.md', '').replace('./', '')}`
+    }))
+    // articles.sort((a, b) => new Date(b.attributes.date).getTime() - new Date(a.attributes.date).getTime())
+    return { archives: formatArticles(articles, articles.length) }
+    // console.log(articles)
+  },
+  methods: {
+    formatDate(date) {
+      return formatDate(date)
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

@@ -9,7 +9,7 @@
           {{ formatDate(article.attributes.date) }}
         </div>
         <div class="article-category">
-          <nuxt-link class="link" to="/" v-for="category in article.attributes.categories" :key="category">
+          <nuxt-link class="link" :to="`/categories/${category}`" v-for="category in article.attributes.categories" :key="category">
             {{category}}
           </nuxt-link>
         </div>

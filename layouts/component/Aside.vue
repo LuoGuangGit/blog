@@ -10,7 +10,7 @@
         </div>
         <ul class="category-list">
           <li class="category-list-item" v-for="category in categories" :key="category">
-            <nuxt-link class="link" :to="`/category/${category}`">{{category}}</nuxt-link>
+            <nuxt-link class="link" :to="`/categories/${category}`">{{category}}</nuxt-link>
           </li>
         </ul>
       </div>

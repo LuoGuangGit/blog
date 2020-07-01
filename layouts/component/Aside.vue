@@ -19,7 +19,7 @@
           <i class="fa fa-tag"> 标签</i>
         </div>
         <div class="tag-list">
-          <nuxt-link class="tag-item" :to="`/tag/${tag}`" v-for="tag in tags" :key="tag">{{tag}}</nuxt-link>
+          <nuxt-link class="tag-item" :to="`/tags/${tag}`" v-for="tag in tags" :key="tag">{{tag}}</nuxt-link>
         </div>
       </div>
       <div class="widget">

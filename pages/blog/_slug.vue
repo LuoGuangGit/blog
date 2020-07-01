@@ -17,7 +17,7 @@
       <div class="article-content markdown-body" v-html="article.html"></div>
       <div class="article-copyright"></div>
       <div class="article-tags">
-        <nuxt-link class="link" to="/" v-for="tag in article.attributes.tags" :key="tag">
+        <nuxt-link class="link" :to="`/tags/${tag}`" v-for="tag in article.attributes.tags" :key="tag">
           {{tag}}
         </nuxt-link>
       </div>

@@ -20,9 +20,9 @@
       <nuxt-link to="/about" class="nav-link" exact-active-class="current">
         <i class="fa fa-user"> 关于</i>
       </nuxt-link>
-      <nuxt-link to="/history" class="nav-link" exact-active-class="current">
+      <!-- <nuxt-link to="/history" class="nav-link" exact-active-class="current">
         <i class="fa fa-book"> 历史</i>
-      </nuxt-link>
+      </nuxt-link> -->
       <nuxt-link to="/guestbook" class="nav-link" exact-active-class="current">
         <i class="fa fa-comments"> 留言</i>
       </nuxt-link>
